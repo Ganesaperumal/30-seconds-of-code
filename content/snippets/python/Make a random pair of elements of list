@@ -1,0 +1,29 @@
+---
+title: Make a random pair of elements of list
+type: snippet
+language: python
+tags: [list]
+cover: 
+dateModified: 2023-11-23
+---
+
+For given a list of names or elements, a list of random pairs will be generated.
+
+- import random module and shuffle the input list by using random.shuffle()
+- important condition is no element of the list paired with same element.
+- create a new_list by removeing last element of the input_list and insert it into first.
+- zip the input_list and new_list and convert into list of lists of pairs.
+
+```py
+import random
+def random_pairs(input_list):
+    random.shuffle(input_list)
+    new_list = input_list[-1] + input_list[:-1]
+    return list(zip([input_list, ))
+```
+
+```py
+random_pairs(['a', 'b', 'c', 'd'])      # [('d', 'e'), ('b', 'd'), ('a', 'b'), ('c', 'a'), ('e', 'c')]
+random_pairs(['red', 'blue', 'green'])  # [('green', 'blue'), ('red', 'green'), ('blue', 'red')]
+random_pairs([1, 2, 3, 4, 5, 6, 7])     # [(7, 2), (3, 7), (4, 3), (1, 4), (6, 1), (5, 6), (2, 5)]
+```
